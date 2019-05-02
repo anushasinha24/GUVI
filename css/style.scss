@@ -1,0 +1,94 @@
+$gap250: 250px;
+$gap100: 100px;
+$gap10: 10px;
+$gap15: 15px;
+$gap5: 5px;
+$white: #ffffff;
+$black: #000000;
+$l: left;
+$r: right;
+$c: center;
+$content: #28a5df;
+$chover: #e6e6e6;
+$fhover: #808080;
+
+.background-image{
+		opacity: 0.9;
+		filter: alpha(opacity=90);
+		}
+		.margin-top-250{
+		margin-top: $gap250;
+		}
+		.margin-bottom-100{
+		margin-bottom: $gap100;
+		}
+		* {
+			box-sizing: border-box;
+		}
+
+		form.search-bar input[type=text] {
+			padding: $gap10;
+			font-size: 17px;
+			border: 1px solid grey;
+			float: $l;
+			width: 85%;
+			background: $white;
+		}
+
+		form.search-bar button {
+			float: $l;
+			width: 15%;
+			padding: $gap10;
+			background: white;
+			color: $content;
+			font-size: 17px;
+			border: 1px solid grey;
+			border-left: none;
+			cursor: pointer;
+		}
+
+		form.search-bar button:hover {
+			background: $chover;
+		}
+
+		form.search-bar::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+		
+		input.ContentButtons{
+			width: 250px;
+			padding: $gap10;
+			font-weight: bold;
+			font-size: 125%;
+			color: $white;
+			background: $content;
+			border: none;
+		}
+		input.ContentButtons:hover {
+			color: $content;
+			background: $chover;
+			border: none;
+		}	
+		.forgot:hover{
+			text-decoration: underline;
+			opacity: 1.3;
+			color: $fhover;
+		}
+		
+		textarea{
+		resize: none;
+		overflow: auto;
+		width: 50%;
+		font-size: 18px; 
+		background-color: transparent; 
+		border-radius: $gap10; 
+		border: 1px solid; 
+		border-color: $black; 
+		margin-top: $gap15;
+		}
+		
+		body{
+			background-color: #d3ecf8;
+		}
