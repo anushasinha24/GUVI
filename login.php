@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="css/lightcase.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <!-- CUSTOM STYLE -->      
     <link rel="stylesheet" href="css/template-style.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -27,7 +26,6 @@
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>   
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
 	
   </head>
   <body class="size-1280">

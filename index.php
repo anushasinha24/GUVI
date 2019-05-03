@@ -174,10 +174,6 @@
 			   <a class="text-primary-hover" href="https://www.guvi.in/team.html">Team</a><br>
 			   <a class="text-primary-hover" href="queries.php">Submit Queries</a><br>
                <a class="text-primary-hover" href="https://www.guvi.in/career.html">Careers</a><br><br>
-			   <!--<h4 class="text-white text-strong margin-m-top-30">Term of Use</h4>
-               <a class="text-primary-hover" href="page.html">Terms and Conditions</a><br>
-               <a class="text-primary-hover" href="page.html">Refund Policy</a><br>
-               <a class="text-primary-hover" href="page.html">Disclaimer</a>-->
             </div>
             <div class="s-12 m-6 l-4 xl-4">
                

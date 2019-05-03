@@ -2,13 +2,8 @@
 	session_start();
 
 	$id = $_SESSION['id'];
-	$mysqlport = getenv('S2G_MYSQL_PORT');
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-
-    $connect = mysql_connect($dbhost, $dbuser, $dbpass);
-    mysql_select_db("guvi");
+	
+	include("database.php");
 	
 	$currpass = $_POST['curpwd'];
 	$newpass = $_POST['conf-pwd'];

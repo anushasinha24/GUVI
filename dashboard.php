@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("fetch.php");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -17,15 +18,13 @@
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="css/lightcase.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <!-- CUSTOM STYLE -->      
     <link rel="stylesheet" href="css/template-style.css">
 	<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700,900&amp;subset=latin-ext" rel="stylesheet"> 
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>   
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
   </head>
 
   <body class="size-1280">
@@ -82,33 +81,11 @@
 	  }
 	  ?>
     </header>
-    
-	<?php
-	$id = $_SESSION['id'];
-	$mysqlport = getenv('S2G_MYSQL_PORT');
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-
-    $connect = mysql_connect($dbhost, $dbuser, $dbpass);
-    mysql_select_db("guvi");
- 
-    $search_query = "SELECT * FROM users WHERE id = '$id'";
-	$result1 = mysql_query($search_query,$connect);
-	$row=mysql_fetch_assoc($result1);
-	$name=$row['Name'];
-	$email=$row['Email'];
-	$mobile=$row['Mobile'];
-	$gender=$row['Gender'];
-	$profession=$row['Profession'];
-	$language=$row['Language'];
-	$dob=$row['DOB'];
-?>
 
     <!-- MAIN -->
     <main role="main">    
       <!-- Header -->
-      <header class="section-top-padding background-image text-center"><!--  style="background-image:url(images/dashboard.jpg);"-->
+      <header class="section-top-padding background-image text-center">
         <h1 class="text-extra-thin text-s-size-30 text-m-size-40 text-size-50 text-line-height-1 margin-bottom-100 margin-top-250" style="font-weight: bold;">
           Hi <?php echo $name."!";?><br><br>
 		  Welcome to your Dashboard

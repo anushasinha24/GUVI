@@ -1,41 +1,36 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-
 <?php
-
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$mob = $_POST['mob'];
-	$gender = $_POST['gender'];
-	$type = $_POST['type'];
-	$language = $_POST['language'];
-	$dob = $_POST['dob'];
-	$pass = $_POST['conf-pwd'];
+	session_start();
 	
-	$mysqlport = getenv('S2G_MYSQL_PORT');
-	$dbhost = "localhost".$mysqlport;
-	$dbuser = 'root';
-	$dbpass = '';
-	$connect = mysql_connect($dbhost, $dbuser, $dbpass);
+	include('db.php');
 	
-	$flag=0;
+	$Name = $_POST['Name'];
+	$Email = $_POST['Email'];
+	$Mobile = $_POST['Mobile'];
+	$Gender = $_POST['Gender'];
+	$Profession = $_POST['Profession'];
+	$Language = $_POST['Language'];
+	$DOB = $_POST['DOB'];
+	$Password = $_POST['Password'];	
 	
-	mysql_select_db("guvi");
-	$insertquery = "INSERT INTO users (Name, Email, Mobile, Gender, Profession, Language, DOB, Password) VALUES ('$name', '$email', '$mob', '$gender', '$type', '$language', '$dob', '$pass')";
-	if(mysql_query($insertquery , $connect))
-			$flag=1;
-	if($flag==1)
+	$insertquery = $DBcon->prepare("INSERT INTO users(Name, Email, Mobile, Gender, Profession, Language, DOB, Password) VALUES(:Name, :Email,:Mobile,:Gender, :Profession, :Language, :DOB, :Password)");
+ 
+	$insertquery->bindparam(':Name', $Name);
+	$insertquery->bindparam(':Email', $Email);
+	$insertquery->bindparam(':Mobile', $Mobile);
+	$insertquery->bindparam(':Gender', $Gender);
+	$insertquery->bindparam(':Profession', $Profession);
+	$insertquery->bindparam(':Language', $Language);
+	$insertquery->bindparam(':DOB', $DOB);
+	$insertquery->bindparam(':Password', $Password);
+		
+	if($insertquery->execute())
 	{
-		header('Location: login.php');
+		$res="Account created successfully. Please proceed to the login page to login to your account.";
+		echo json_encode($res);
 	}
 	else
 	{
-		echo "Account with the given email id already exists. If you have forgotten your password, <a href='forgot.html'>click here</a>";
+		$error="Account with the given email id already exists.";
+		echo json_encode($error);
 	}
-	mysql_close($connect);
 ?>
-
-</body>
-</html>

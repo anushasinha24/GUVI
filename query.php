@@ -1,29 +1,28 @@
 <?php
 	session_start();
 	
-	$name = $_POST["Name"];
-	$email = $_POST["Email"];
-	$mob = $_POST["Mobile"];
-	$msg = $_POST["Message"];
-	$mysqlport = getenv('S2G_MYSQL_PORT');
-	$dbhost = "localhost";
-	$dbuser = "root";
-	$dbpass = "";
-	$connect = mysql_connect($dbhost, $dbuser, $dbpass);
+	include('db.php');
 	
-	mysql_select_db("guvi");
+	$Name = $_POST["Name"];
+	$Email = $_POST["Email"];
+	$Mobile = $_POST["Mobile"];
+	$Message = $_POST["Message"];	
 	
-	$insertquery = "INSERT INTO queries (Name, Email, Mobile, Message) VALUES ('$name', '$email', '$mob', '$msg')";
-	
-	if(mysql_query($insertquery , $connect))
+	$insertquery = $DBcon->prepare("INSERT INTO queries(Name,Email,Mobile,Message) VALUES(:Name, :Email,:Mobile,:Message)");
+ 
+	$insertquery->bindparam(':Name', $Name);
+	$insertquery->bindparam(':Email', $Email);
+	$insertquery->bindparam(':Mobile', $Mobile);
+	$insertquery->bindparam(':Message', $Message);
+		
+	if($insertquery->execute())
 	{
-		$_SESSION['error']=1;
+		$res="Query submitted successfully.";
+		echo json_encode($res);
 	}
 	else
 	{
-		$_SESSION['error']=2;
+		$error="Couldn't submit query. Please try again later.";
+		echo json_encode($error);
 	}
-	mysql_close($connect);
-	
-	header('Location: queries.php');
 ?>

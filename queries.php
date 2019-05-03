@@ -17,15 +17,15 @@
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="css/lightcase.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <!-- CUSTOM STYLE -->      
     <link rel="stylesheet" href="css/template-style.css">
 	<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700,900&amp;subset=latin-ext" rel="stylesheet"> 
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/queries.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>   
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 	
   </head>
 
@@ -134,42 +134,27 @@
             <div class="row" style="margin: 5% 0 5% 0; color: #28a5df">
 				<div class="col-xs-2"></div>
 				<div class="col-xs-8" style="text-align: center; background-image:url(images/queries.jpg); background-repeat: no-repeat;">
-					<form method="post" action="query.php">
-					<?php
-					if($_SESSION['error'] == 1)
-					{
-					?>
-					<br><span style="color:green; font-size: 120%">Query submitted successfully.</span><br>
-					<?php
-						$_SESSION['error']=0;
-					}
-					else if($_SESSION['error'] == 2)
-					{
-					?>	
-					<br><span style="color:red; font-size: 120%">Couldn't submit query. Please try again later.</span><br>
-					<?php
-						$_SESSION['error']=0;
-					}
-				?>
+					<form id="queryform" method="" action="" novalidate="novalidate">
+					<p id="message"></p>
 						<div id="name">
 							<br>
-							<input type="text" name="Name" placeholder=" Name" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000;">
+							<input type="text" name="Name" id="Name" placeholder=" Name" value="" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000;">
 						</div>
 						<div id="email">
 							<br>
-							<input type="email" name="Email" placeholder=" Email Address" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000; margin-top: 15px;">
+							<input type="email" name="Email" id="Email" placeholder=" Email Address" value="" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000; margin-top: 15px;">
 						</div>
 						<div id="mob">
 							<br>
-							<input type="tel" name="Mobile" placeholder=" Mobile Number" maxlength="10" size="10" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000; margin-top: 15px;">
+							<input type="tel" name="Mobile" id="Mobile" placeholder=" Mobile Number" value="" maxlength="10" size="10" style="width: 50%; height: 40px; font-size: 18px; background-color: transparent; border-radius: 5px; border: 2px solid; border-color: #000000; margin-top: 15px;">
 						</div>
 						<div id="message">
 							<br>
-							<textarea rows="5" name="Message" cols="50" placeholder="Type your message here..." style="font-family: inherit; text-align: left; font-size: 18px; border: 2px solid; border-color: #000000;"></textarea>
+							<textarea rows="5" cols="50" name="Message" id="Message" value="" placeholder="Type your message here..." style="font-family: inherit; text-align: left; font-size: 18px; border: 2px solid; border-color: #000000;"></textarea>
 						</div>
 						<div id="formbuttons">
 							<br>
-							<input class="ContentButtons" type="submit" value="SUBMIT"/>
+							<input class="ContentButtons" type="button" onclick="insertData()" value="SUBMIT"/>
 							<input class="ContentButtons" type="reset" value="RESET">
 						</div>
 					</form>
@@ -245,7 +230,7 @@
         </div>  
       </section>
     </footer>
-    <script type="text/javascript" src="js/responsee.js"></script>
+	<script type="text/javascript" src="js/responsee.js"></script>
     <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
     <script type="text/javascript" src="js/template-scripts.js"></script> 
   </body>

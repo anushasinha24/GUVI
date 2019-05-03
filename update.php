@@ -1,30 +1,9 @@
 <?php
 	session_start();
+	include("fetch.php");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
-
-<?php
-	$id = $_SESSION['id'];
-	$mysqlport = getenv('S2G_MYSQL_PORT');
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-
-    $connect = mysql_connect($dbhost, $dbuser, $dbpass);
-    mysql_select_db("guvi");
- 
-    $search_query = "SELECT * FROM users WHERE id = '$id'";
-	$result = mysql_query($search_query,$connect);
-	$row=mysql_fetch_assoc($result);
-	$name=$row['Name'];
-	$email=$row['Email'];
-	$mobile=$row['Mobile'];
-	$gender=$row['Gender'];
-	$profession=$row['Profession'];
-	$language=$row['Language'];
-	$dob=$row['DOB'];
-?>
 
   <head>
     <meta charset="UTF-8">
@@ -39,15 +18,13 @@
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="css/lightcase.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
     <!-- CUSTOM STYLE -->      
     <link rel="stylesheet" href="css/template-style.css">
 	<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700,900&amp;subset=latin-ext" rel="stylesheet"> 
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>   
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
   </head>
 
   <body class="size-1280">
@@ -133,14 +110,13 @@
 					else if($_SESSION['error'] == 2)
 					{
 				?>	
-						<br><span style="color:red">Personal Details have been updated, but skills could not be updated<br><br>If the problem persists, contact admin</span><br>
+						<br><span style="color:red">Details could not be updated. Please try again later.</span><br>
 				<?php
 						$_SESSION['error']=0;
 					}
 				?>
 						<div class="line text-center">
 							<hr class="break background-primary break-small break-center margin-bottom-50">
-							<!--<input type="button" class="ContentButtons" value="Personal Details">-->
 							<h2 class="text-dark text-size-50 text-m-size-40"><b>PERSONAL DETAILS</b></h2>
 							<hr class="break background-primary break-small break-center margin-bottom-50">
 						</div>
